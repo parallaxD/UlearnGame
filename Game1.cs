@@ -18,7 +18,7 @@ namespace UlearnGame
         private int _windowHeight;
 
         private Player player;
-        private Player player2;
+
 
         public Game1()
         {
