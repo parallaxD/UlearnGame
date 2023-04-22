@@ -11,13 +11,15 @@ namespace UlearnGame
     public class Bullet
     {
         private float _speed;
+        GraphicsDevice graphicsDevice;
         public Texture2D _bulletTexture { get; private set; }
 
         public Vector2 _position;
         public Vector2 _direction;
 
-        public Bullet(Vector2 position, Vector2 direction, float speed)
+        public Bullet(Texture2D bulletTexture, Vector2 position, Vector2 direction, float speed)
         {
+            _bulletTexture = bulletTexture;
             _position = position;
             _direction = direction;
             _speed = speed;
