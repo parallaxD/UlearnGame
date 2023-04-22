@@ -7,12 +7,12 @@ namespace UlearnGame
     public class Game1 : Game
     {
         private Texture2D _playerTexture;
-        private Texture2D _bulletTexture;
 
         private GraphicsDeviceManager _graphicsManager;
         private GraphicsAdapter _graphicsAdapter;
+        private TextManager textManager;
 
-        private SpriteBatch _spriteBatch;
+        public static SpriteBatch _spriteBatch;
 
         private int _windowWidth;
         private int _windowHeight;
@@ -22,6 +22,7 @@ namespace UlearnGame
 
         public Game1()
         {
+            textManager = new TextManager();
             _graphicsManager = new GraphicsDeviceManager(this);
             _graphicsAdapter = new GraphicsAdapter();
             _graphicsManager.PreferredBackBufferWidth = _graphicsAdapter.CurrentDisplayMode.Width;
@@ -36,9 +37,8 @@ namespace UlearnGame
         protected override void Initialize()
         {
             _playerTexture = Content.Load<Texture2D>("knight_f_idle_anim_f0");
-            _bulletTexture = new Texture2D(GraphicsDevice, 50, 50);
             var startPosition = new Vector2(_windowWidth / 2, _windowHeight / 2);
-            player = new Player(_playerTexture, startPosition, 300);
+            player = new Player(_playerTexture, 300);
             base.Initialize();
         }
 

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 
 namespace UlearnGame
@@ -20,9 +21,17 @@ namespace UlearnGame
             _direction = Vector2.Zero;
             var _keyboardState = Keyboard.GetState();
             if (_keyboardState.IsKeyDown(Keys.W)) _direction.Y--;           
-            if (_keyboardState.IsKeyDown(Keys.S)) _direction.Y++;           
-            if (_keyboardState.IsKeyDown(Keys.A)) _direction.X--;           
-            if (_keyboardState.IsKeyDown(Keys.D)) _direction.X++;
+            if (_keyboardState.IsKeyDown(Keys.S)) _direction.Y++;
+            if (_keyboardState.IsKeyDown(Keys.A))
+            {
+                _direction.X--;
+                Player.SpriteEffect = SpriteEffects.FlipHorizontally;
+            }
+            if (_keyboardState.IsKeyDown(Keys.D))
+            {
+                _direction.X++;
+                Player.SpriteEffect = SpriteEffects.None;
+            }
             return _direction;
         }
 
