@@ -2,34 +2,49 @@
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using System;
-using System.Numerics;
-using Vector2 = Microsoft.Xna.Framework.Vector2;
 
 namespace UlearnGame
 {
     public class Player : Sprite
     {
-        private float _speed;
         public Vector2 Direction;
 
-        public Player(Texture2D texture, float speed) : base(texture) 
-        {
-            _speed = speed;       
+        public Player(Texture2D texture, Vector2 startPosition, int speed) : base(texture, startPosition, speed) 
+        {            
         }
 
-        public void Update(GameTime gameTime)
+        public void Update()
         {
             Direction = InputManager.GetDirection();
-            
-            Position += Direction * _speed * (float)gameTime.ElapsedGameTime.TotalSeconds;
-            //var toMouse = InputManager.mousePosition - _position;
 
-            //_rotation = (float)Math.Atan2(toMouse.Y, toMouse.X);
+            Position += Direction * Speed * Globals.TotalSeconds;
 
-            //if (InputManager.IsFireButtonPressed())
-            //{
-            //    Shoot();
-            //}          
+            var vecToMouse = InputManager.mousePosition - Position;
+            Rotation = (float)Math.Atan2(vecToMouse.Y, vecToMouse.X);
+
+            if (InputManager.isMouseClicked)
+            {
+                Shoot();
+            }
         }
+
+        private void Shoot()
+        {
+            ProjectileData projectileData = new ProjectileData()
+            {
+                Position = Position,
+                Rotation = Rotation,
+                Speed = 300,
+                Lifespan = 3
+            };
+            ProjectileManager.AddProjectile(projectileData);    
+        }
+
+        public override void Draw(SpriteBatch spriteBatch, float scale, float rotation)
+        {
+            base.Draw(spriteBatch, scale, 0);
+        }
+
     }
+
 }

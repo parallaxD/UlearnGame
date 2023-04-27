@@ -16,18 +16,24 @@ namespace UlearnGame
         public Vector2 Position { get; set; }
         public Vector2 Origin { get; private set; }
 
-        public float RotationVelocity;
-        public float LinearVelocity;
+        public float Rotation { get; set; }
 
-        public Sprite(Texture2D texture)
+        public int Speed { get; set; }
+
+        public Sprite(Texture2D texture, Vector2 position, int speed)
         {
             _texture = texture;
+            Speed = speed;
+            Position = position;
+            Rotation = Rotation;
+            Origin = new(texture.Width / 2, texture.Height / 2);
         }
 
-        public void Draw(SpriteBatch spriteBatch)
+        public virtual void Draw(SpriteBatch spriteBatch, float scale, float rotation)
         {
-            spriteBatch.Draw(_texture, Position, null, Color.White, 0, Origin, 1, SpriteEffect, 0f);
+            spriteBatch.Draw(_texture, Position, null, Color.White, rotation, Origin, scale, SpriteEffect, 0f);
         }
+
 
     }
 }
