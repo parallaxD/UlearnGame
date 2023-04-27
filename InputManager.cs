@@ -14,7 +14,9 @@ namespace UlearnGame
         private static Vector2 _direction;
         public static Vector2 mousePosition => Mouse.GetState().Position.ToVector2();
 
-        private static MouseState prevMouseState;
+        private static MouseState _prevMouseState;
+
+        public static bool isMouseClicked { get; private set; }
 
         public static Vector2 GetDirection()
         {
@@ -35,10 +37,10 @@ namespace UlearnGame
             return _direction;
         }
 
-        public static bool IsFireButtonPressed()
+        public static void Update()
         {
-            var mouseState = Mouse.GetState();
-            return mouseState.LeftButton == ButtonState.Pressed && prevMouseState.LeftButton == ButtonState.Released;
+            isMouseClicked = (Mouse.GetState().LeftButton == ButtonState.Pressed) && (_prevMouseState.LeftButton == ButtonState.Released);
+            _prevMouseState = Mouse.GetState();
         }
     }
 }
