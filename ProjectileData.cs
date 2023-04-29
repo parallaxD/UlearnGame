@@ -12,7 +12,6 @@ namespace UlearnGame
         public Vector2 Position { get; set; }
         public float Lifespan { get; set; }
         public int Speed { get; set; }
-
         public float Rotation { get; set; }
     }
 }
