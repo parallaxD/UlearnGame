@@ -23,7 +23,6 @@ namespace UlearnGame
         {
             Position += Direction * Speed * Globals.TotalSeconds;
             Lifespan -= Globals.TotalSeconds;
-
         }
     }
 }

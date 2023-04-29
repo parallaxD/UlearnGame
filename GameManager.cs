@@ -14,10 +14,12 @@ namespace UlearnGame
 
         public GameManager()
         {
-            ProjectileManager.Initialize();
             _player = new Player(Globals.Content.Load<Texture2D>("wizzard_f_idle_anim_f0"),
-                new Vector2(Globals._windowWidth / 2, Globals._windowHeight / 2), 
+                new Vector2(Globals._windowWidth / 2, Globals._windowHeight / 2),
                 300);
+            ProjectileManager.Initialize();
+
+            UIManager.Initialize();
         }
         public void Update()
         {
@@ -27,6 +29,7 @@ namespace UlearnGame
         }
         public void Draw()
         {
+            UIManager.Draw();
             ProjectileManager.Draw();
             _player.Draw(Globals.SpriteBatch, 2, 0);
         }

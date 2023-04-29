@@ -8,9 +8,11 @@ namespace UlearnGame
     public class Player : Sprite
     {
         public Vector2 Direction;
+        public static int health;
 
         public Player(Texture2D texture, Vector2 startPosition, int speed) : base(texture, startPosition, speed) 
-        {            
+        {
+            health = 100;
         }
 
         public void Update()
