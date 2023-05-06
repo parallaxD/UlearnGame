@@ -42,7 +42,7 @@ namespace UlearnGame
 
         public static void Draw()
         {
-            foreach (var projectile in Projectiles) projectile.Draw(Globals.SpriteBatch, 1, projectile.Rotation, SpriteEffects.None);
+            foreach (var projectile in Projectiles) projectile.Draw(Globals.SpriteBatch, 0.1f, projectile.Rotation, SpriteEffects.None);
         }
     }
 }

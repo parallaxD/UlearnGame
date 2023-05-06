@@ -18,7 +18,7 @@ namespace UlearnGame
                 new Vector2(Globals._windowWidth / 2, Globals._windowHeight / 2),
                 300);
 
-            ProjectileManager.Initialize("knight_f_idle_anim_f0");
+            ProjectileManager.Initialize("fireball");
             EnemyManager.Initialize("big_demon_idle_anim_f0");
             EnemyManager.AddEnemy(new Vector2(1000, 500), 50, 100);
             UIManager.Initialize();

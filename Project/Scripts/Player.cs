@@ -17,6 +17,9 @@ namespace UlearnGame
         private float _getHitRate = 0.5f;
         private float _lastHitTime;
 
+        private float _shootRate = 0.5f;
+        private float _lastShootTime;
+
         public Player(Texture2D texture, Vector2 startPosition, int speed) : base(texture, startPosition, speed) 
         {
             Health = 100;
@@ -25,6 +28,7 @@ namespace UlearnGame
         public void Update(List<Enemy> enemies)
         {
             _lastHitTime += Globals.TotalSeconds;
+            _lastShootTime += Globals.TotalSeconds;
             var dir = InputManager.GetDirection();
             Position = new(
                  Math.Clamp(Position.X + (dir.X * Speed * Globals.TotalSeconds), 0, Globals._windowWidth),
@@ -53,14 +57,18 @@ namespace UlearnGame
 
         private void Shoot()
         {
-            ProjectileData projectileData = new ProjectileData()
+            if (_shootRate < _lastShootTime)
             {
-                Position = Position,
-                Rotation = Rotation,
-                Speed = 300,
-                Lifespan = 3
-            };
-            ProjectileManager.AddProjectile(projectileData);
+                _lastShootTime = 0;
+                ProjectileData projectileData = new ProjectileData()
+                {
+                    Position = Position,
+                    Rotation = Rotation,
+                    Speed = 300,
+                    Lifespan = 3
+                };
+                ProjectileManager.AddProjectile(projectileData);
+            }
         }
 
         public void Draw(SpriteBatch spriteBatch, int scale)
