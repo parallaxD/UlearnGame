@@ -24,5 +24,10 @@ namespace UlearnGame
             Position += Direction * Speed * Globals.TotalSeconds;
             Lifespan -= Globals.TotalSeconds;
         }
+
+        public void Destroy()
+        {
+            Lifespan = 0;
+        }
     }
 }

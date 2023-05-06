@@ -10,9 +10,9 @@ namespace UlearnGame
 {
     public class Sprite
     {
-        private Texture2D _texture;
+        public Texture2D _texture { get; private set; }
 
-        public static SpriteEffects SpriteEffect { get; set; }
+        //public static SpriteEffects SpriteEffect { get; set; }
         public Vector2 Position { get; set; }
         public Vector2 Origin { get; private set; }
 
@@ -29,9 +29,9 @@ namespace UlearnGame
             Origin = new(texture.Width / 2, texture.Height / 2);
         }
 
-        public virtual void Draw(SpriteBatch spriteBatch, float scale, float rotation)
+        public virtual void Draw(SpriteBatch spriteBatch, float scale, float rotation, SpriteEffects spriteEffect)
         {
-            spriteBatch.Draw(_texture, Position, null, Color.White, rotation, Origin, scale, SpriteEffect, 0f);
+            spriteBatch.Draw(_texture, Position, null, Color.White, rotation, Origin, scale, spriteEffect, 0f);
         }
 
 

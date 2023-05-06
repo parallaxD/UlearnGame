@@ -17,9 +17,13 @@ namespace UlearnGame
         {
             _heartTexture = Globals.Content.Load<Texture2D>("heart");
             _arialFont = Globals.Content.Load<SpriteFont>("arialFont");
-            _playerHealthString = $": {Player.health}";            
+            _playerHealthString = $": {Player.Health}";            
         }
 
+        public static void Update()
+        {
+            _playerHealthString = $": {Player.Health}";
+        }
         public static void Draw()
         {
             Globals.SpriteBatch.Draw(_heartTexture, new Rectangle(5, 5, 40, 40), Color.White);
