@@ -20,6 +20,18 @@
 /processorParam:TextureFormat=Compressed
 /build:arialFont.spritefont
 
+#begin big_demon_idle_anim_f0.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:big_demon_idle_anim_f0.png
+
 #begin heart.png
 /importer:TextureImporter
 /processor:TextureProcessor
