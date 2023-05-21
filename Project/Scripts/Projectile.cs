@@ -12,12 +12,16 @@ namespace UlearnGame
     {
         public Vector2 Direction { get; set; }
         public float Lifespan { get; set; }
-        public Projectile(Texture2D texture, ProjectileData data, int speed) : base(texture, data.Position, 300)
+
+        public int Damage { get; set; }
+        public Projectile(Texture2D texture, ProjectileData data, int speed, int damage) : base(texture, 300, data.Position)
         {
+            Damage = damage;
             Speed = data.Speed;
             Rotation = data.Rotation;
-            Direction = new((float)Math.Cos(Rotation), (float)Math.Sin(Rotation));
+            Direction = new Vector2((float)Math.Cos(Rotation), (float)Math.Sin(Rotation));
             Lifespan = data.Lifespan;
+            Damage = damage;
         }
         public void Update()
         {

@@ -47,9 +47,7 @@ namespace UlearnGame
         protected override void Draw(GameTime gameTime)
         {
             GraphicsDevice.Clear(Color.BlueViolet);
-            _spriteBatch.Begin();
             _gameManager.Draw();
-            _spriteBatch.End();
             base.Draw(gameTime);
         }
     }

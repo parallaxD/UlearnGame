@@ -17,9 +17,9 @@ namespace UlearnGame
             _texture = Globals.Content.Load<Texture2D>(textureName);
         }
 
-        public static void AddProjectile(ProjectileData data)
+        public static void AddProjectile(ProjectileData data, int damage)
         {
-            Projectiles.Add(new Projectile(_texture, data, 600));
+            Projectiles.Add(new Projectile(_texture, data, 600, damage));
         }
         public static void Update(List<Enemy> enemies)
         {
@@ -31,7 +31,7 @@ namespace UlearnGame
                     if (enemy.Health <= 0) continue;
                     if ((projectile.Position - enemy.Position).Length() < 32)
                     {
-                        enemy.TakeDamage(50);
+                        enemy.TakeDamage(projectile.Damage);
                         projectile.Destroy();
                         break;
                     }

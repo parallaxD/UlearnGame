@@ -1,9 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework.Input;
 using System;
 using System.Collections.Generic;
-using static System.Formats.Asn1.AsnWriter;
 
 namespace UlearnGame
 {
@@ -12,31 +10,65 @@ namespace UlearnGame
         public Vector2 Direction;
 
         public static SpriteEffects SpriteEffect;
+
         public static int Health;
+        public static int MaxHealth = 100;
+
+        public static int killsCount;
+        public static bool IsDead { get; private set; }
+
+        public static bool IsBuffed { get; private set; }
+        public static Buff LastTakenBuff { get; private set; }
+        private float _buffDuration;
+
+        public int Damage;
 
         private float _getHitRate = 0.5f;
         private float _lastHitTime;
 
-        private float _shootRate = 0.5f;
+        public static float MaxShootRate = 0.4f;
+        public static float CurrentShootRate = 0.4f;
+        public static float MinShootRate = 0.1f;
         private float _lastShootTime;
 
-        public Player(Texture2D texture, Vector2 startPosition, int speed) : base(texture, startPosition, speed) 
+
+        public Player(Texture2D texture, Vector2 startPosition, int speed, int damage) : base(texture, speed, startPosition) 
         {
+            killsCount = 0;
+            Damage = damage;
             Health = 100;
         }
 
-        public void Update(List<Enemy> enemies)
+        public void Update(List<Enemy> enemies, List<Buff> buffs)
         {
             _lastHitTime += Globals.TotalSeconds;
             _lastShootTime += Globals.TotalSeconds;
             var dir = InputManager.GetDirection();
             Position = new(
-                 Math.Clamp(Position.X + (dir.X * Speed * Globals.TotalSeconds), 0, Globals._windowWidth),
-                 Math.Clamp(Position.Y + (dir.Y * Speed * Globals.TotalSeconds), 0, Globals._windowHeight)
+                 Math.Clamp(Position.X + (dir.X * Speed * Globals.TotalSeconds), 0, Globals.WindowWidth),
+                 Math.Clamp(Position.Y + (dir.Y * Speed * Globals.TotalSeconds), 0, Globals.WindowHeight)
              );
 
             var vecToMouse = InputManager.mousePosition - Position;
             Rotation = (float)Math.Atan2(vecToMouse.Y, vecToMouse.X);
+
+            foreach (var buff in buffs)
+            {
+                if ((Position - buff.Position).Length() < 40)
+                {
+                    _buffDuration = buff.Duration;
+                    TakeBuff(buff);
+                    IsBuffed = true;
+                    LastTakenBuff = buff;
+                    break;
+                }
+            }
+
+            _buffDuration -= Globals.TotalSeconds;
+            if (_buffDuration <= 0)
+            {
+                CurrentShootRate = MaxShootRate;
+            }
 
             foreach (var enemy in enemies)
             {
@@ -57,26 +89,27 @@ namespace UlearnGame
 
         private void Shoot()
         {
-            if (_shootRate < _lastShootTime)
+            if (CurrentShootRate < _lastShootTime)
             {
                 _lastShootTime = 0;
                 ProjectileData projectileData = new ProjectileData()
                 {
+                    
                     Position = Position,
                     Rotation = Rotation,
                     Speed = 300,
                     Lifespan = 3
                 };
-                ProjectileManager.AddProjectile(projectileData);
+                ProjectileManager.AddProjectile(projectileData, Damage);
             }
         }
 
-        public void Draw(SpriteBatch spriteBatch, int scale)
-        {
-            spriteBatch.Draw(_texture, Position, null, Color.White, 0, Origin, scale, SpriteEffect, 0f);
-        }
-
         private void TakeDamage(int damage) => Health -= damage;
+
+        private void TakeBuff(Buff buff)
+        {
+            buff.ApplyEffect();
+        }
 
     }
 

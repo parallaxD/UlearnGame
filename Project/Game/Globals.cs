@@ -15,11 +15,18 @@ namespace UlearnGame
         public static float TotalSeconds;
         public static ContentManager Content { get; set; }
         public static SpriteBatch SpriteBatch { get; set; }
-        public static float _windowWidth = GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Width;
-        public static float _windowHeight = GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Height;
+
+        public static float WindowWidth = GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Width;
+        public static float WindowHeight = GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Height;
+        public static Random Random => new Random();
+
+        public static int mouseX;
+        public static int mouseY;
 
         public static void Update(GameTime gameTime)
         {
+            mouseX = Mouse.GetState().X;
+            mouseY = Mouse.GetState().Y;
             TotalSeconds = (float)gameTime.ElapsedGameTime.TotalSeconds;
         }
     }

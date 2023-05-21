@@ -12,8 +12,12 @@ namespace UlearnGame
     {
         public int Health;
         public int Damage;
-        public Enemy(Texture2D texture, Vector2 position, int speed, int health, int damage) : base(texture, position, speed)
+
+        public Vector2 StartPosition;
+
+        public Enemy(Texture2D texture, Vector2 startPosition, int speed, int health, int damage) : base(texture, speed, startPosition)
         {
+            StartPosition = startPosition;
             Health = health;
             Damage = damage;
         }
@@ -29,8 +33,6 @@ namespace UlearnGame
             }
         }
 
-        public void TakeDamage(int damage) => Health -= damage;
-            
-
+        public void TakeDamage(int damage) => Health -= damage;            
     }
 }

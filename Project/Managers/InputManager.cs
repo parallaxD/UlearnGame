@@ -16,10 +16,13 @@ namespace UlearnGame
 
         private static MouseState _prevMouseState;
 
+        public static Rectangle MouseRectangle { get; private set; }
+
         public static bool isMouseClicked { get; private set; }
 
         public static Vector2 GetDirection()
         {
+            
             _direction = Vector2.Zero;
             var _keyboardState = Keyboard.GetState();
             if (_keyboardState.IsKeyDown(Keys.W)) _direction.Y--;           
@@ -41,6 +44,10 @@ namespace UlearnGame
         {
             isMouseClicked = (Mouse.GetState().LeftButton == ButtonState.Pressed) && (_prevMouseState.LeftButton == ButtonState.Released);
             _prevMouseState = Mouse.GetState();
+
+            var mouseState = Mouse.GetState();
+
+            MouseRectangle = new Rectangle(mouseState.X, mouseState.Y, 1, 1);
         }
     }
 }

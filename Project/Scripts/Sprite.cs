@@ -1,18 +1,12 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace UlearnGame
 {
     public class Sprite
     {
-        public Texture2D _texture { get; private set; }
+        public Texture2D _texture { get; set; }
 
-        //public static SpriteEffects SpriteEffect { get; set; }
         public Vector2 Position { get; set; }
         public Vector2 Origin { get; private set; }
 
@@ -20,7 +14,7 @@ namespace UlearnGame
 
         public int Speed { get; set; }
 
-        public Sprite(Texture2D texture, Vector2 position, int speed)
+        public Sprite(Texture2D texture, int speed, Vector2 position)
         {
             _texture = texture;
             Speed = speed;
