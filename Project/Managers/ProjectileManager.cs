@@ -19,7 +19,7 @@ namespace UlearnGame
 
         public static void AddProjectile(ProjectileData data, int damage)
         {
-            Projectiles.Add(new Projectile(_texture, data, 600, damage));
+            Projectiles.Add(new Projectile(_texture, data, data.Speed, damage));
         }
         public static void Update(List<Enemy> enemies)
         {

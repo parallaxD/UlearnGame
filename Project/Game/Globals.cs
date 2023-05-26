@@ -23,11 +23,18 @@ namespace UlearnGame
         public static int mouseX;
         public static int mouseY;
 
+        public static float EnemySpeedMultiplier = 1.02f;
+        public static float PlayerSpeedMultiplier = 1.1f;
+
         public static void Update(GameTime gameTime)
         {
             mouseX = Mouse.GetState().X;
             mouseY = Mouse.GetState().Y;
             TotalSeconds = (float)gameTime.ElapsedGameTime.TotalSeconds;
+        }
+        public static float RandomFloat(float min, float max)
+        {
+            return (float)(Random.NextDouble() * (max - min)) + min;
         }
     }
 }

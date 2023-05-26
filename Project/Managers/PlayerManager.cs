@@ -19,9 +19,18 @@ namespace UlearnGame
                 50);
         }
 
-        public static void Update(List<Enemy> enemies, List<Buff> buffs)
+        public static void Update(List<Enemy> enemies, List<Buff> buffsAtScene, List<Buff> activeBuffs)
         {
-            Player.Update(enemies, buffs);
+            Player.Update(enemies, buffsAtScene, activeBuffs);
+            if (EnemyManager.WaveNumber % 2 == 0 && !GameManager.HasPlayerSpeedBoosted && Player.Speed <= Player.MaxSpeed)
+            {
+                Player.Speed = Player.Speed * Globals.PlayerSpeedMultiplier;
+                Player.DefaultSpeed = Player.Speed;
+                GameManager.HasPlayerSpeedBoosted = true;
+            }
+            if (Player.Health <= 0)
+            {              
+            }
         }
 
         public static void Draw(int scale)

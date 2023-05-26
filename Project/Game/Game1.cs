@@ -39,6 +39,10 @@ namespace UlearnGame
         {
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
+            if (PlayerManager.Player.Health <= 0)
+            {
+                Exit();
+            }
             Globals.Update(gameTime);
             _gameManager.Update();
             base.Update(gameTime);

@@ -42,7 +42,7 @@ namespace UlearnGame
 
         public static void Update()
         {
-            isMouseClicked = (Mouse.GetState().LeftButton == ButtonState.Pressed) && (_prevMouseState.LeftButton == ButtonState.Released);
+            isMouseClicked = (Mouse.GetState().LeftButton == ButtonState.Pressed) && (_prevMouseState.LeftButton == ButtonState.Pressed);
             _prevMouseState = Mouse.GetState();
 
             var mouseState = Mouse.GetState();

@@ -11,25 +11,31 @@ namespace UlearnGame
 {
     public class GameManager
     {
-
+        private Background _bg;
+        public static bool HasPlayerSpeedBoosted = false;
         public GameManager()
         {
+            _bg = new Background();
+            SoundManager.Initialize();
             PlayerManager.Initialize();
             ProjectileManager.Initialize("fireball");
-            UIManager.Initialize();
+            UIManager.Initialize(PlayerManager.Player);
         }
         public void Update()
         {
-            PlayerManager.Update(EnemyManager.Enemies, BuffManager.Buffs);
-            BuffManager.Update();
-            UIManager.Update();
+            PlayerManager.Update(EnemyManager.Enemies, BuffManager.BuffsAtScene, BuffManager.ActiveBuffs);
+            ParticleManager.Update();
             ProjectileManager.Update(EnemyManager.Enemies);
-            InputManager.Update();
             EnemyManager.Update(PlayerManager.Player);
+            BuffManager.Update(PlayerManager.Player);
+            UIManager.Update(PlayerManager.Player);
+            InputManager.Update();
         }
         public void Draw()
         {
             Globals.SpriteBatch.Begin();
+            _bg.Draw();
+            ParticleManager.Draw();
             UIManager.Draw();
             BuffManager.Draw();
             ProjectileManager.Draw();
