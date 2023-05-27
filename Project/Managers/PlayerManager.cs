@@ -35,7 +35,7 @@ namespace UlearnGame
 
         public static void Draw(int scale)
         {
-            Globals.SpriteBatch.Draw(Player._texture, Player.Position, null, Color.White, 0, Player.Origin, scale, Player.SpriteEffect, 0f);
+            Globals.SpriteBatch.Draw(Player.Texture, Player.Position, null, Color.White, 0, Player.Origin, scale, Player.SpriteEffect, 0f);
         }
 
     }

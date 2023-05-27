@@ -20,16 +20,16 @@ namespace UlearnGame
         public static float WindowHeight = GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Height;
         public static Random Random => new Random();
 
-        public static int mouseX;
-        public static int mouseY;
+        public static int MouseX;
+        public static int MouseY;
 
         public static float EnemySpeedMultiplier = 1.02f;
         public static float PlayerSpeedMultiplier = 1.1f;
 
         public static void Update(GameTime gameTime)
         {
-            mouseX = Mouse.GetState().X;
-            mouseY = Mouse.GetState().Y;
+            MouseX = Mouse.GetState().X;
+            MouseY = Mouse.GetState().Y;
             TotalSeconds = (float)gameTime.ElapsedGameTime.TotalSeconds;
         }
         public static float RandomFloat(float min, float max)

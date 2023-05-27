@@ -28,7 +28,7 @@ namespace UlearnGame
         {
             if (Health <= 0)
             {
-                if (_texture == Textures.ChortTexture)
+                if (Texture == Textures.ChortTexture)
                 {
                     SoundManager.PlayChortDieSound();
                 }
@@ -38,23 +38,23 @@ namespace UlearnGame
                 }
 
                 ParticleEmitterData emitterData = new ParticleEmitterData();
-                emitterData.particleData.colorStart = Color.Red;              
-                emitterData.particleData.colorEnd = Color.Red;
-                emitterData.particleData.opacityStart = 1f;
-                emitterData.particleData.opacityEnd = 0f;
-                emitterData.particleData.sizeStart = 16f;
-                emitterData.particleData.sizeEnd = 2f;
-                emitterData.angleVariance = 360f;
-                emitterData.lifespanMin = 0.5f;
-                emitterData.lifespanMax = 1.0f;
-                emitterData.interval = 0.05f;
-                emitterData.emitCount = 10;
+                emitterData.ParticleData.ColorStart = Color.Red;              
+                emitterData.ParticleData.ColorEnd = Color.Red;
+                emitterData.ParticleData.OpacityStart = 1f;
+                emitterData.ParticleData.OpacityEnd = 0f;
+                emitterData.ParticleData.SizeStart = 16f;
+                emitterData.ParticleData.SizeEnd = 2f;
+                emitterData.AngleVariance = 360f;
+                emitterData.LifespanMin = 0.5f;
+                emitterData.LifespanMax = 1.0f;
+                emitterData.Interval = 0.05f;
+                emitterData.EmitCount = 10;
 
                 ParticleEmitter emitter = new ParticleEmitter(this, emitterData);
                 ParticleManager.AddParticleEmitter(emitter);
 
 
-                player.killsCount++;
+                player.KillsCount++;
             }
             var vecToPlayer = player.Position - Position;
             Rotation = (float)Math.Atan2(vecToPlayer.Y, vecToPlayer.X);

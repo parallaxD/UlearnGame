@@ -18,7 +18,7 @@ namespace UlearnGame
         public int Health;
         public int MaxHealth = 100;
 
-        public int killsCount;
+        public int KillsCount;
         public static bool IsDead { get; private set; }
 
         public static bool IsBuffed { get; private set; }
@@ -30,7 +30,7 @@ namespace UlearnGame
         private float _lastHitTime;
 
         public float MaxShootRate = 0.4f;
-        public float currentShootRate = 0.4f;
+        public float CurrentShootRate = 0.4f;
         public float MinShootRate = 0.1f;
         private float _lastShootTime;
 
@@ -39,7 +39,7 @@ namespace UlearnGame
         {
             DefaultSpeed = speed;
             Speed = speed;
-            killsCount = 0;
+            KillsCount = 0;
             Damage = damage;
             Health = 100;
         }
@@ -54,7 +54,7 @@ namespace UlearnGame
                  Math.Clamp(Position.Y + (dir.Y * Speed * Globals.TotalSeconds), 0, Globals.WindowHeight)
              );
 
-            var vecToMouse = InputManager.mousePosition - Position;
+            var vecToMouse = InputManager.MousePosition - Position;
             Rotation = (float)Math.Atan2(vecToMouse.Y, vecToMouse.X);
 
             foreach (var buff in buffsAtScene)
@@ -78,7 +78,7 @@ namespace UlearnGame
                 }
             }
 
-            if (InputManager.isMouseClicked)
+            if (InputManager.IsMouseClicked)
             {              
                 Shoot();
             }
@@ -87,7 +87,7 @@ namespace UlearnGame
 
         private void Shoot()
         {
-            if (currentShootRate < _lastShootTime)
+            if (CurrentShootRate < _lastShootTime)
             {
                 SoundManager.PlayAttackSound();
                 _lastShootTime = 0;

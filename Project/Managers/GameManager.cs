@@ -11,11 +11,11 @@ namespace UlearnGame
 {
     public class GameManager
     {
-        private Background _bg;
+        private Background _background;
         public static bool HasPlayerSpeedBoosted = false;
         public GameManager()
         {
-            _bg = new Background();
+            _background = new Background();
             SoundManager.Initialize();
             PlayerManager.Initialize();
             ProjectileManager.Initialize("fireball");
@@ -34,7 +34,7 @@ namespace UlearnGame
         public void Draw()
         {
             Globals.SpriteBatch.Begin();
-            _bg.Draw();
+            _background.Draw();
             ParticleManager.Draw();
             UIManager.Draw();
             BuffManager.Draw();

@@ -9,9 +9,11 @@ namespace UlearnGame
 {
     public class ParticleEmitter
     {
-        private readonly ParticleEmitterData _data;
+        private ParticleEmitterData _data;
+
         private float _intervalLeft;
-        private readonly IEmitter _emitter;
+
+        private IEmitter _emitter;
 
         public float LifeTime;
 
@@ -19,16 +21,16 @@ namespace UlearnGame
         {
             _emitter = emitter;
             _data = data;
-            _intervalLeft = data.interval;
+            _intervalLeft = data.Interval;
             LifeTime = 1f;
         }
 
         private void Emit(Vector2 pos)
         {
-            ParticleData data = _data.particleData;
-            data.lifespan = Globals.RandomFloat(_data.lifespanMin, _data.lifespanMax);
-            data.speed = Globals.RandomFloat(_data.speedMin, _data.speedMax);
-            data.angle = Globals.RandomFloat(_data.angle - _data.angleVariance, _data.angle + _data.angleVariance);
+            ParticleData data = _data.ParticleData;
+            data.Lifespan = Globals.RandomFloat(_data.LifespanMin, _data.LifespanMax);
+            data.Speed = Globals.RandomFloat(_data.SpeedMin, _data.SpeedMax);
+            data.Angle = Globals.RandomFloat(_data.Angle - _data.AngleVariance, _data.Angle + _data.AngleVariance);
 
             Particle p = new(pos, data);
             ParticleManager.AddParticle(p);
@@ -43,9 +45,9 @@ namespace UlearnGame
             LifeTime -= Globals.TotalSeconds;           
             while (_intervalLeft <= 0f)
             {
-                _intervalLeft += _data.interval;
+                _intervalLeft += _data.Interval;
                 var pos = _emitter.EmitPosition;
-                for (int i = 0; i < _data.emitCount; i++)
+                for (int i = 0; i < _data.EmitCount; i++)
                 {
                     Emit(pos);
                 }

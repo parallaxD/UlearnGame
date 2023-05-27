@@ -5,7 +5,7 @@ namespace UlearnGame
 {
     public class Sprite
     {
-        public Texture2D _texture { get; set; }
+        public Texture2D Texture { get; set; }
 
         public Vector2 Position { get; set; }
         public Vector2 Origin { get; private set; }
@@ -16,7 +16,7 @@ namespace UlearnGame
 
         public Sprite(Texture2D texture, float speed, Vector2 position)
         {
-            _texture = texture;
+            Texture = texture;
             Speed = speed;
             Position = position;
             Rotation = Rotation;
@@ -25,7 +25,7 @@ namespace UlearnGame
 
         public virtual void Draw(SpriteBatch spriteBatch, float scale, float rotation, SpriteEffects spriteEffect)
         {
-            spriteBatch.Draw(_texture, Position, null, Color.White, rotation, Origin, scale, spriteEffect, 0f);
+            spriteBatch.Draw(Texture, Position, null, Color.White, rotation, Origin, scale, spriteEffect, 0f);
         }
 
 

@@ -11,8 +11,8 @@ namespace UlearnGame
 {
     public static class SoundManager
     {
-        public static bool isMusicOn { get; private set; }
-        public static bool isSoundsOn { get; private set; }
+        public static bool IsMusicOn { get; private set; }
+        public static bool IsSoundsOn { get; private set; }
         private static Song _music;
 
         private static SoundEffect _playerAttackSound;
@@ -27,8 +27,8 @@ namespace UlearnGame
             _music = Globals.Content.Load<Song>("gameMusic");
 
 
-            isMusicOn = true;
-            isSoundsOn = true;
+            IsMusicOn = true;
+            IsSoundsOn = true;
 
             MediaPlayer.IsRepeating = true;
             MediaPlayer.Volume = 0.2f;
@@ -37,17 +37,17 @@ namespace UlearnGame
 
         public static void PlayAttackSound()
         {
-            if (!isSoundsOn) return;
+            if (!IsSoundsOn) return;
             _playerAttackSound.Play(0.2f, 0, 0);
         }
         public static void PlayDemonDieSound()
         {
-            if (!isSoundsOn) return;
+            if (!IsSoundsOn) return;
             _demonDieSound.Play(0.5f, 0, 0);
         }
         public static void PlayChortDieSound()
         {
-            if (!isSoundsOn) return;
+            if (!IsSoundsOn) return;
             _chortDieSound.Play(0.2f, 0, 0);
         }
     }

@@ -21,13 +21,13 @@ namespace UlearnGame
             _heartTexture = Globals.Content.Load<Texture2D>("heart");
             _arialFont = Globals.Content.Load<SpriteFont>("arialFont");
             _playerHealthString = $": {player.Health}";
-            _killsCountString = $"Чертей убито : {player.killsCount}";
+            _killsCountString = $"Чертей убито : {player.KillsCount}";
         }
 
         public static void Update(Player player)
         {
             _playerHealthString = $": {player.Health}";
-            _killsCountString = $"Chertey   ubito : {player.killsCount}";
+            _killsCountString = $"Chertey   ubito : {player.KillsCount}";
         }
         public static void Draw()
         {

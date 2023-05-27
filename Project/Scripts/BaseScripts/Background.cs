@@ -11,8 +11,8 @@ namespace UlearnGame
 {
     public class Background
     {
-        private readonly Point _mapTileSize = new((int)Globals.WindowWidth / 15, (int)Globals.WindowHeight / 15);
-        private readonly Sprite[,] _tiles;
+        private Point _mapTileSize = new((int)Globals.WindowWidth / 15, (int)Globals.WindowHeight / 15);
+        private Sprite[,] _tiles;
 
         public Background()
         {
@@ -21,14 +21,14 @@ namespace UlearnGame
             List<Texture2D> backgroundSprites = new(5);
             for (int i = 1; i < 6; i++) backgroundSprites.Add(Globals.Content.Load<Texture2D>($"floor_{i}"));
 
-            Point TileSize = new(backgroundSprites[0].Width, backgroundSprites[0].Height);
+            Point tileSize = new(backgroundSprites[0].Width, backgroundSprites[0].Height);
             Random random = new();
             for (int y = 0; y < _mapTileSize.Y; y++)
             {
                 for (int x = 0; x < _mapTileSize.X; x++)
                 {
                     int r = random.Next(0, backgroundSprites.Count);
-                    _tiles[x, y] = new(backgroundSprites[r], 0, new((x + 0.5f) * TileSize.X, (y + 0.5f) * TileSize.Y));
+                    _tiles[x, y] = new(backgroundSprites[r], 0, new((x + 0.5f) * tileSize.X, (y + 0.5f) * tileSize.Y));
                 }
             }
         }

@@ -17,11 +17,11 @@ namespace UlearnGame
 
         public override void ApplyEffect(Player player)
         {
-            player.currentShootRate = player.MinShootRate;
+            player.CurrentShootRate = player.MinShootRate;
         }
         public override void RemoveEffect(Player player)
         {
-            player.currentShootRate = player.MaxShootRate;
+            player.CurrentShootRate = player.MaxShootRate;
         }
     }
 }

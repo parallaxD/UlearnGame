@@ -15,7 +15,9 @@ namespace UlearnGame
 
         private static float _chortSpeed = 250f;
         private static float _demonSpeed = 100f;
+
         public static List<Enemy> Enemies { get; } = new List<Enemy>();
+
         public static int WaveNumber { get; private set; }
 
         public static void AddEnemy(Enemy enemy)
@@ -46,7 +48,7 @@ namespace UlearnGame
         public static void Draw()
         {
             foreach (var enemy in Enemies) 
-                if (enemy._texture == Textures.ChortTexture)
+                if (enemy.Texture == Textures.ChortTexture)
                 {
                     enemy.Draw(Globals.SpriteBatch, 6, enemy.Rotation, SpriteEffects.None);
                 }

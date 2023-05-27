@@ -13,7 +13,7 @@ namespace UlearnGame
         public Texture2D Texture;
         public Vector2 Position;
         public float Duration;
-        public bool isActive;
+        public bool IsActive;
 
 
         public Buff(Texture2D texture, Vector2 position)

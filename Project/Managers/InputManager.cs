@@ -12,13 +12,13 @@ namespace UlearnGame
     public static class InputManager
     {
         private static Vector2 _direction;
-        public static Vector2 mousePosition => Mouse.GetState().Position.ToVector2();
+        public static Vector2 MousePosition => Mouse.GetState().Position.ToVector2();
 
         private static MouseState _prevMouseState;
 
         public static Rectangle MouseRectangle { get; private set; }
 
-        public static bool isMouseClicked { get; private set; }
+        public static bool IsMouseClicked { get; private set; }
 
         public static Vector2 GetDirection()
         {
@@ -42,7 +42,7 @@ namespace UlearnGame
 
         public static void Update()
         {
-            isMouseClicked = (Mouse.GetState().LeftButton == ButtonState.Pressed) && (_prevMouseState.LeftButton == ButtonState.Pressed);
+            IsMouseClicked = (Mouse.GetState().LeftButton == ButtonState.Pressed) && (_prevMouseState.LeftButton == ButtonState.Pressed);
             _prevMouseState = Mouse.GetState();
 
             var mouseState = Mouse.GetState();

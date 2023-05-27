@@ -27,7 +27,7 @@ namespace UlearnGame
                 particle.Update();
             }
 
-            _particles.RemoveAll(p => p.isFinished);
+            _particles.RemoveAll(p => p.IsFinished);
         }
 
         public static void UpdateEmitters()
